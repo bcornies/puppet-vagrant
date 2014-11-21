@@ -9,7 +9,7 @@ end
 
 def default_test_facts
   {
-    :id => "testuser",
+    :boxen_user => "testuser",
     :boxen_home => "/test/boxen"
   }
 end

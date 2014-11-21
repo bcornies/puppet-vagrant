@@ -11,7 +11,7 @@ class vagrant($version = '1.5.0') {
     provider => 'pkgdmg'
   }
 
-  file { "/Users/${::id}/.vagrant.d":
+  file { "/Users/${::boxen_user}/.vagrant.d":
     ensure => directory
   }
 }
