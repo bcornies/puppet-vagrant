@@ -20,7 +20,7 @@ define vagrant::plugin(
   }
 
   if $license {
-    file { "/Users/${::boxen_user}/.vagrant.d/license-${plugin_name}.lic":
+    file { "/Users/${::user}/.vagrant.d/license-${plugin_name}.lic":
       ensure  => $ensure,
       mode    => '0644',
       source  => $license,

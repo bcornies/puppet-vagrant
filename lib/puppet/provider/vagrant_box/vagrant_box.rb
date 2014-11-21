@@ -41,15 +41,15 @@ Puppet::Type.type(:vagrant_box).provide :vagrant_box do
       name, vprovider = @resource[:name].split('/')
 
       File.directory? \
-        "/Users/#{Facter[:boxen_user].value}/.vagrant.d/boxes/#{name}/#{vprovider}"
+        "/Users/#{Facter[:user].value}/.vagrant.d/boxes/#{name}/#{vprovider}"
     end
   end
 
   private
   def custom_environment
     {
-      "HOME"         => "/Users/#{Facter[:boxen_user].value}",
-      "VAGRANT_HOME" => "/Users/#{Facter[:boxen_user].value}/.vagrant.d",
+      "HOME"         => "/Users/#{Facter[:user].value}",
+      "VAGRANT_HOME" => "/Users/#{Facter[:user].value}/.vagrant.d",
     }
   end
 
@@ -58,7 +58,7 @@ Puppet::Type.type(:vagrant_box).provide :vagrant_box do
       :combine            => true,
       :custom_environment => custom_environment,
       :failonfail         => true,
-      :uid                => Facter[:boxen_user].value,
+      :uid                => Facter[:user].value,
     }
   end
 end

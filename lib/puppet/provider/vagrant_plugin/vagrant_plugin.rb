@@ -5,7 +5,7 @@ Puppet::Type.type(:vagrant_plugin).provide :vagrant_plugin do
   include Puppet::Util::Execution
 
   def self.fetch_plugin_json
-    plugins = "/Users/#{Facter[:boxen_user].value}/.vagrant.d/plugins.json"
+    plugins = "/Users/#{Facter[:user].value}/.vagrant.d/plugins.json"
 
     if File.exist? plugins
       json = JSON.parse IO.read(plugins)
@@ -52,8 +52,8 @@ Puppet::Type.type(:vagrant_plugin).provide :vagrant_plugin do
   private
   def custom_environment
     {
-      "HOME"         => "/Users/#{Facter[:boxen_user].value}",
-      "VAGRANT_HOME" => "/Users/#{Facter[:boxen_user].value}/.vagrant.d",
+      "HOME"         => "/Users/#{Facter[:user].value}",
+      "VAGRANT_HOME" => "/Users/#{Facter[:user].value}/.vagrant.d",
     }
   end
 
@@ -61,7 +61,7 @@ Puppet::Type.type(:vagrant_plugin).provide :vagrant_plugin do
     {
       :custom_environment => custom_environment,
       :failonfail         => true,
-      :uid                => Facter[:boxen_user].value,
+      :uid                => Facter[:user].value,
     }
   end
 end

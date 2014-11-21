@@ -30,7 +30,7 @@ Puppet::Type.newtype(:vagrant_plugin) do
 
   autorequire :file do
     %W(
-    /Users/#{Facter[:boxen_user].value}/.vagrant.d/license-#{self[:name]}.lic
+    /Users/#{Facter[:user].value}/.vagrant.d/license-#{self[:name]}.lic
     )
   end
 end
